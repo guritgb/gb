@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main() {
+    int n, i, coins[100], sum = 0;
+
+    printf("Enter the number of bags: ");
+    scanf("%d", &n);
+
+    printf("Enter the count of coins in each bag:\n");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &coins[i]);
+        sum += coins[i];
+    }
+
+    printf("Count of coins in each bag: ");
+    for (i = 0; i < n; i++) {
+        printf("%d", coins[i]);
+        if (i != n-1) {
+            printf(", ");
+        }
+    }
+
+    printf("\nSum of all the coins: %d\n", sum);
+
+    return 0;
+}
