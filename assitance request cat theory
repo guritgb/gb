@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+  int dep_hrs, dep_min, dep_sec;
+  cout << "Enter the departure time (in 24-hour format):\n";
+  cout << "Hours (0-23): ";
+  cin >> dep_hrs;
+  cout << "Minutes (0-59): ";
+  cin >> dep_min;
+  cout << "Seconds (0-59): ";
+  cin >> dep_sec;
+
+  int arr_hrs = dep_hrs + 10;  // Adding 10 hours for the journey duration
+  int arr_min = dep_min + 20;  // Adding 20 minutes for the journey duration
+  int arr_sec = dep_sec + 10;  // Adding 10 seconds for the journey duration
+
+  // Adjusting arrival time if necessary
+  if (arr_sec >= 60) {
+    arr_sec -= 60;
+    arr_min += 1;
+  }
+  if (arr_min >= 60) {
+    arr_min -= 60;
+    arr_hrs += 1;
+  }
+  if (arr_hrs >= 24) {
+    arr_hrs -= 24;
+  }
+
+  // Displaying arrival time
+  cout << "The train will arrive at: ";
+  cout << arr_hrs << ":" << arr_min << ":" << arr_sec << endl;
+
+  return 0;
+}
