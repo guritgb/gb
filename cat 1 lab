@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Student {
+    char name[50];
+    int roll_no;
+    char dob[15];
+    int physics_marks;
+};
+
+void generate_marks(struct Student *students, int size) {
+    for (int i = 0; i < size; i++) {
+        printf("Enter the details of student %d:\n", i + 1);
+        printf("Enter name: ");
+        scanf("%s", students[i].name);
+        printf("Enter roll number: ");
+        scanf("%d", &students[i].roll_no);
+        printf("Enter date of birth (dd/mm/yyyy): ");
+        scanf("%s", students[i].dob);
+        printf("Enter marks in Physics: ");
+        scanf("%d", &students[i].physics_marks);
+    }
+}
+
+void generate_marks_list(int *marks_list, struct Student *students, int size) {
+    for (int i = 0; i < size; i++) {
+        marks_list[i] = students[i].physics_marks;
+    }
+}
+
+void print_marks_list(int *marks_list, int size) {
+    printf("List of marks:\n");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", marks_list[i]);
+    }
+    printf("\n");
+}
+
+void combine_rank_lists(struct Student *students_a, int size_a, struct Student *students_b, int size_b) {
+    int size_combined = size_a + size_b;
+    struct Student *students_combined = (struct Student*) malloc(size_combined * sizeof(struct Student));
+    memcpy(students_combined, students_a, size_a * sizeof(struct Student));
+    memcpy(students_combined + size_a, students_b, size_b * sizeof(struct Student));
+
+    for (int i = 0; i < size_combined; i++) {
+        for (int j = i + 1; j < size_combined; j++) {
+            if (students_combined[i].physics_marks < students_combined[j].physics_marks) {
+                struct Student temp = students_combined[i];
+                students_combined[i] = students_combined[j];
+                students_combined[j] = temp;
+            } else if (students_combined[i].physics_marks == students_combined[j].physics_marks) {
+                int dob_i_day, dob_i_month, dob_i_year;
+                sscanf(students_combined[i].dob, "%d/%d/%d", &dob_i_day, &dob_i_month, &dob_i_year);
+                int dob_j_day, dob_j_month, dob_j_year;
+                sscanf(students_combined[j].dob, "%d/%d/%d", &dob_j_day, &dob_j_month, &dob_j_year);
+                if (dob_i_year < dob_j_year || (dob_i_year == dob_j_year && dob_i_month < dob_j_month) || (dob_i_year == dob_j_year && dob_i_month == dob_j_month && dob_i_day < dob_j_day)) {
+                    struct Student temp = students_combined[i];
+                    students_combined[i] = students_combined[j];
+                    students_combined[j] = temp;
+                }
+            }
+        }
+    }
+
+    printf("Combined rank list:\n");
+    for (int i = 0; i < size_combined; i++) {
+        printf("Rank %d: %s, Roll No: %d, Marks: %d\n", i + 1, students_combined[i].name, students_combined[i].roll_no, students_combined[i].physics_marks);
+    }
+
+    free(students_combined);
+}
+
+void find_top_and_bottom_students(struct Student *students_a, int size_a, struct Student *students_b, int size_b) {
+    int size_combined = size_a + size_b;
+    struct Student *students_combined = (struct Student*) malloc(size_combined * sizeof(struct Student));
+    memcpy(students_combined, students_a, size_a * sizeof(struct Student));
+    memcpy(students_combined + size_a, students_b, size_b * sizeof(struct Student));
+
+    int max_marks = -1;
+    int min_marks = 101;
+    for (int i = 0; i < size_combined; i++) {
+        if (students_combined[i].physics_marks > max_marks) {
+            max_marks = students_combined[i].physics_marks;
+        }
+        if (students_combined[i].physics_marks < min_marks) {
+            min_marks = students_combined
