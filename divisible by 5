@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main() {
+    int array[] = {15, 25, 30, 45, 50, 75, 90, 100, 120, 125, 130, 135, 140};
+    int size = sizeof(array) / sizeof(array[0]);
+    int divisible_by_5[size];
+    int index = 0;
+
+    for (int i = 0; i < size; i++) {
+        if (array[i] % 5 == 0 && array[i] <= 150) {
+            divisible_by_5[index] = array[i];
+            index++;
+        }
+
+        if (array[i] > 150) {
+            break;
+        }
+    }
+
+    printf("Numbers divisible by 5 and not greater than 150:\n");
+    for (int i = 0; i < index; i++) {
+        printf("%d ", divisible_by_5[i]);
+    }
+
+    return 0;
+}
