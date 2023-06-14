@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Car {
+private:
+    string engineModel;
+    float mileage;
+    string color;
+    int year;
+
+public:
+    Car(int y, string c, string em, float m) {
+        year = y;
+        color = c;
+        engineModel = em;
+        mileage = m;
+    }
+
+    void printFeatures() {
+        cout << "Year: " << year << endl;
+        cout << "Color: " << color << endl;
+        cout << "Engine Model: " << engineModel << endl;
+        cout << "Mileage: " << mileage << endl;
+    }
+};
+
+int main() {
+    int N;
+    cout << "Enter the number of cars to be created: ";
+    cin >> N;
+
+    Car eliteCars[] = {
+        Car(1921, "yellow", "Mc07", 67.5),
+        Car(1922, "red", "Mc01", 63.2),
+        Car(1925, "black", "Mc03", 69.7),
+        Car(1929, "orange", "Mc06", 70.5),
+        Car(1932, "maroon", "Mc04", 37.2),
+        Car(1935, "grey", "Mc09", 97.7)
+    };
+
+    for (int i = 0; i < N; i++) {
+        cout << "\nCar " << (i + 1) << " Features:\n";
+        eliteCars[i % 6].printFeatures();
+    }
+
+    return 0;
+}
