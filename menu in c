@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int main() {
+    int choice, num, count;
+    do {
+        printf("\nEnter your choice:\n");
+        printf("1. Count the number of digits in a number\n");
+        printf("0. Exit\n");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 0:
+                printf("Thank you for using the program!\n");
+                break;
+            case 1:
+                printf("Enter a number: ");
+                scanf("%d", &num);
+                count = 0;
+                while (num != 0) {
+                    num /= 10;
+                    ++count;
+                }
+                printf("The number of digits in the given number is %d.\n", count);
+                break;
+            default:
+                printf("Invalid choice. Please try again.\n");
+                break;
+        }
+    } while (choice != 0);
+    return 0;
+}
