@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class BankAccount {
+public:
+    BankAccount(int acctNum, string holderName, double balance) {
+        accountNum = acctNum;
+        holder = holderName;
+        this->balance = balance;
+    }
+
+    void deposit(double amount) {
+        balance += amount;
+    }
+
+    void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+        } else {
+            cout << "Error: Insufficient funds to withdraw " << amount << endl;
+        }
+    }
+
+    double getBalance() {
+        return balance;
+    }
+
+private:
+    int accountNum;
+    string holder;
+    double balance;
+};
+
+int main() {
+    // Create two BankAccount objects
+    BankAccount acct1(12345, "John Smith", 1000.0);
+    BankAccount acct2(67890, "Jane Doe", 500.0);
+
+    // Prompt user to enter deposit and withdrawal amounts for each account
+    double depositAmt, withdrawAmt;
+
+    cout << "Enter deposit amount for account 1: ";
+    cin >> depositAmt;
+    acct1.deposit(depositAmt);
+
+    cout << "Enter withdrawal amount for account 1: ";
+    cin >> withdrawAmt;
+    acct1.withdraw(withdrawAmt);
+
+    cout << "Enter deposit amount for account 2: ";
+    cin >> depositAmt;
+    acct2.deposit(depositAmt);
+
+    cout << "Enter withdrawal amount for account 2: ";
+    cin >> withdrawAmt;
+    acct2.withdraw(withdrawAmt);
+
+    // Print out current balances for both accounts
+    cout << "Account 1 balance: $" << acct1.getBalance() << endl;
+    cout << "Account 2 balance: $" << acct2.getBalance() << endl;
+
+    return 0;
+}
