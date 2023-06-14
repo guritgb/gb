@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <string.h>
+
+struct Book {
+    char title[50];
+    char author[50];
+    char ISBN[13];
+    int pages;
+};
+
+char* get_book_with_max_pages(struct Book* books, int num_books) {
+    int max_pages = 0;
+    char* max_title = NULL;
+    for (int i = 0; i < num_books; i++) {
+        if (books[i].pages > max_pages) {
+            max_pages = books[i].pages;
+            max_title = books[i].title;
+        }
+    }
+    return max_title;
+}
+
+int main() {
+    struct Book books[3] = {
+        {"Book A", "Author A", "ISBN-A-1234", 100},
+        {"Book B", "Author B", "ISBN-B-5678", 200},
+        {"Book C", "Author C", "ISBN-C-9101", 150}
+    };
+    char* max_title = get_book_with_max_pages(books, 3);
+    printf("The book with the most pages is: %s\n", max_title);
+    return 0;
+}
