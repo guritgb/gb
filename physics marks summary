@@ -1,3 +1,4 @@
+//using for loop
 #include <stdio.h>
 
 int main() {
@@ -23,6 +24,45 @@ int main() {
 
         // Adding up marks
         total_marks += marks;
+    }
+
+    // Calculating average marks
+    average_marks = total_marks / n;
+
+    printf("Maximum marks: %.2f\n", max_marks);
+    printf("Minimum marks: %.2f\n", min_marks);
+    printf("Average marks: %.2f\n", average_marks);
+
+    return 0;
+}
+// using while loop
+#include <stdio.h>
+
+int main() {
+    int n, i = 1;
+    float marks, max_marks = 0, min_marks = 100, total_marks = 0, average_marks;
+
+    printf("Enter the number of students: ");
+    scanf("%d", &n);
+
+    while (i <= n) {
+        printf("Enter the marks of student %d: ", i);
+        scanf("%f", &marks);
+
+        // Finding maximum marks
+        if (marks > max_marks) {
+            max_marks = marks;
+        }
+
+        // Finding minimum marks
+        if (marks < min_marks) {
+            min_marks = marks;
+        }
+
+        // Adding up marks
+        total_marks += marks;
+
+        i++;
     }
 
     // Calculating average marks
