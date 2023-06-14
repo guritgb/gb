@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Enter an integer n: ");
+    scanf("%d", &n);
+    
+    int i = 1;
+    while (i < n) {
+        int angstrom = i * i * i + i * i;
+        if (angstrom < n) {
+            printf("%d\n", angstrom);
+        }
+        i++;
+    }
+    
+    return 0;
+}
