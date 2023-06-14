@@ -1,0 +1,33 @@
+**/Write a C Code to check whether the number that is given by the user is a multiple of 8. Continue getting the numbers till -1 is pressed by the user. Display the count of both the cases.
+
+Input: Get values one after the other from the user till the user enters -1.
+
+Output: Display the count of Multiples_of_8 and Non_Multiples_of_8**/
+#include<stdio.h>
+
+int main()
+{
+    int num, count_mult8 = 0, count_non_mult8 = 0;
+
+    printf("Enter numbers (-1 to exit):\n");
+    scanf("%d", &num);
+
+    while(num != -1)
+    {
+        if(num % 8 == 0)
+        {
+            count_mult8++;
+        }
+        else
+        {
+            count_non_mult8++;
+        }
+
+        scanf("%d", &num);
+    }
+
+    printf("Number of Multiples of 8: %d\n", count_mult8);
+    printf("Number of Non-Multiples of 8: %d\n", count_non_mult8);
+
+    return 0;
+}
