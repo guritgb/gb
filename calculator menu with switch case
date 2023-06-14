@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+int main() {
+    int choice, operand1, operand2, result;
+
+    printf("Calculator Menu:\n");
+    printf("1. Bitwise AND\n");
+    printf("2. Bitwise OR\n");
+    printf("3. Negation of first operand\n");
+    printf("4. 2 bits shift at left of first operand\n");
+    printf("5. 2 bits shift at right of first operand\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    switch (choice) {
+        case 1:
+            printf("Enter first operand: ");
+            scanf("%d", &operand1);
+            printf("Enter second operand: ");
+            scanf("%d", &operand2);
+            result = operand1 & operand2;
+            printf("Result: %d\n", result);
+            break;
+        case 2:
+            printf("Enter first operand: ");
+            scanf("%d", &operand1);
+            printf("Enter second operand: ");
+            scanf("%d", &operand2);
+            result = operand1 | operand2;
+            printf("Result: %d\n", result);
+            break;
+        case 3:
+            printf("Enter first operand: ");
+            scanf("%d", &operand1);
+            result = ~operand1;
+            printf("Result: %d\n", result);
+            break;
+        case 4:
+            printf("Enter first operand: ");
+            scanf("%d", &operand1);
+            result = operand1 << 2;
+            printf("Result: %d\n", result);
+            break;
+        case 5:
+            printf("Enter first operand: ");
+            scanf("%d", &operand1);
+            result = operand1 >> 2;
+            printf("Result: %d\n", result);
+            break;
+        default:
+            printf("Invalid choice. Good Luck!\n");
+            break;
+    }
+
+    return 0;
+}
