@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int main() {
+    int num, PrimeCount = 0, CompositeCount = 0, i, flag;
+    
+    printf("Enter numbers: ");
+    scanf("%d", &num);
+    
+    while(num != -1) {
+        flag = 0;
+        
+        for(i = 2; i <= num/2; i++) {
+            if(num % i == 0) {
+                flag = 1;
+                break;
+            }
+        }
+        
+        if(num > 1 && flag == 0) {
+            PrimeCount++;
+        } else {
+            CompositeCount++;
+        }
+        
+        scanf("%d", &num);
+    }
+    
+    printf("PrimeCount = %d\n", PrimeCount);
+    printf("CompositeCount = %d\n", CompositeCount);
+    
+    return 0;
+}
