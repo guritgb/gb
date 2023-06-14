@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+
+template<typename T>
+void pushIntoBag(std::vector<T>& bag, const T& data, int maxSize) {
+    if (bag.size() >= maxSize) {
+        std::cout << "Bag is full" << std::endl;
+    } else {
+        bag.push_back(data);
+    }
+}
+
+int main() {
+    int maxSize;
+    std::cin >> maxSize;
+
+    std::vector<int> bag;
+    int data;
+
+    while (std::cin >> data) {
+        pushIntoBag(bag, data, maxSize);
+    }
+
+    return 0;
+}
